@@ -52,7 +52,10 @@ func (rr *Router) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 			}
 		} else {
 			// write a 405
+			handle405(w, req)
+			return
 		}
 	}
 	// write a NotFound Hander
+	handleNotFound(w, req)
 }
