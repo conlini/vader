@@ -29,7 +29,7 @@ func (r *route) allowed(method string) bool {
 // match verifies if the given request path will match this route spec and return Pathparams along with the same
 func (r *route) match(path string) (PathParam, bool) {
 	matches := r.matcher.FindStringSubmatch(path)
-	if matches != nil {
+	if matches != nil && len(matches) > 0 {
 		params := PathParam{}
 		for i, name := range r.pathParamNames {
 			params[name] = matches[i]
